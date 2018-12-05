@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ bool reduce(int current, int& next, const string& in, vector<char>& out)
         next++;
         return false;
     }
-    
+
     char currentChar = in[current];
     current++;
     next++;
@@ -43,13 +44,39 @@ int star1()
     int next = 1;
     reduce(current, next, "|" + s, reduced);
     reduced.erase(reduced.begin(), reduced.begin() + 1);
-    
+
     return reduced.size();
 }
 
 int star2()
 {
-    return 0;
+    ifstream ifs("day5.in", fstream::in);
+
+    string s;
+    ifs >> s;
+    set<char> units;
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        units.insert(toupper(s[i]));
+    }
+
+    int minSize = INT_MAX;
+    for (auto it : units)
+    {
+        int current = 0;
+        int next = 1;
+        vector<char> reduced;
+        string modified(s);
+        modified.erase(remove(modified.begin(), modified.end(), it), modified.end());
+        modified.erase(remove(modified.begin(), modified.end(), tolower(it)), modified.end());
+        reduce(current, next, "|" + modified, reduced);
+
+        if (reduced.size() < minSize)
+            minSize = reduced.size();
+    }
+
+    return minSize - 1;
 }
 
 int main()
