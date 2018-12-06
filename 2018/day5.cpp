@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 #include <set>
+#include <climits>
 
 using namespace std;
 
@@ -61,7 +63,7 @@ int star2()
         units.insert(toupper(s[i]));
     }
 
-    int minSize = INT_MAX;
+    unsigned int minSize = INT_MAX;
     for (auto it : units)
     {
         int current = 0;
