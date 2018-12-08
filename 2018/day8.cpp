@@ -29,7 +29,7 @@ void read(fstream& ifs, int nodes, int metadata, Node& parent)
     }
 }
 
-int metadataSum(Node node)
+int metadataSum(Node& node)
 {
     int sum = 0;
     for (int value : node.metadata) 
@@ -45,7 +45,7 @@ int metadataSum(Node node)
     return sum;
 }
 
-int nodeValue(Node node)
+int nodeValue(Node& node)
 {
     int sum = 0;
     int i;
