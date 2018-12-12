@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-std=c++11", "-g", "2018/day10.cpp", "-o", "2018/program"
+                "-std=c++11", "-g", "2018/day12.cpp", "-o", "2018/program"
             ]
         }
     ]
